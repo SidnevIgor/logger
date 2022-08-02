@@ -105,6 +105,37 @@
           }
         }
       }
+    },
+    "logger-shared": {
+      "projectType": "library",
+      "root": "projects/logger-shared",
+      "sourceRoot": "projects/logger-shared/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/logger-shared/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/logger-shared/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/logger-shared/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/logger-shared/src/test.ts",
+            "tsConfig": "projects/logger-shared/tsconfig.spec.json",
+            "karmaConfig": "projects/logger-shared/karma.conf.js"
+          }
+        }
+      }
     }
   },
   "defaultProject": "logger"
