@@ -6,7 +6,7 @@ import {
   HttpResponse,
   HttpErrorResponse,
 } from '@angular/common/http';
-import { tap, catchError, throwError } from 'rxjs';
+import { tap, catchError, throwError, of } from 'rxjs';
 import { LoggerError } from './interfaces/loggerError';
 import { Target } from './types/target.type';
 
@@ -46,7 +46,7 @@ export class LoggingInterceptor implements HttpInterceptor {
             timestamp,
           };
           this.logDetails(loggerError);
-          return throwError(loggerError);
+          return throwError(() => loggerError);
         })
       );
     } else {
@@ -56,9 +56,9 @@ export class LoggingInterceptor implements HttpInterceptor {
 
   private logDetails(msg: LoggerError): void {
     if (this.target === 'Console') {
-      console.log(msg);
+      console.log('Interceptor error: ', msg);
     } else {
-      localStorage.setItem('Error: ', JSON.stringify(msg));
+      localStorage.setItem('Interceptor error: ', JSON.stringify(msg));
     }
   }
 

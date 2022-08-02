@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LoggerSharedService } from './logger-shared.service';
+import { LoggingInterceptor } from './logger-shared.service';
 
 describe('LoggerSharedService', () => {
-  let service: LoggerSharedService;
+  let service: LoggingInterceptor;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(LoggerSharedService);
+    service = TestBed.inject(LoggingInterceptor);
   });
 
   it('should be created', () => {
